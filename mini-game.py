@@ -63,11 +63,14 @@ def find_opt_a_i(v, d, e_c, t_i, aa, ff, fx_vals):
 e_c, d_s = 0.001, 0.001
 v = 1
 
-pe = [i/100. for i in range(1,11)]
+pe = [i/100. for i in range(1,32, 5)]
 F = [i for i in range(5, 21)]
 T_i = [i for i in range(1, 21)]
 A = [i for i in range(5, 51)]
-D = [i for i in range(1, 16, 2)]
+D = [1, 10, 100, 1000]
+
+fname = "data_F%d_T%d_A%d_D%d_pe%d.csv" % (max(F), max(T_i), max(A), max(D), 100*max(pe))
+print(fname)
 
 data = []
 
@@ -89,6 +92,5 @@ for d in D:
 df = pd.DataFrame(data, columns = ['d', 'F', 'T_i', 'A', 'p_e', 'a_opt', 'rev'])
 print(df)
 
-fname = "data_F%d_T%d_A%d_D%d.csv" % (max(F), max(T_i), max(A), max(D))
 df.to_csv(fname, sep=',')
 
