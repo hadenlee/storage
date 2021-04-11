@@ -51,6 +51,6 @@ print(df.info())
 # plots_Ti_1(df, 'charts/plot1_By_Ti')
 
 # plot 2
-plots_Ti_2(df, 'charts/plot2_By_Ti')
+#plots_Ti_2(df, 'charts/plot2_By_Ti')
 
 

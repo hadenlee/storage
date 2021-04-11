@@ -63,11 +63,11 @@ def find_opt_a_i(v, d, e_c, t_i, aa, ff, fx_vals):
 e_c, d_s = 0.001, 0.001
 v = 1
 
-pe = [i/100. for i in range(1,32, 5)]
+pe = [i/100. for i in range(1, 42, 5)]
 F = [i for i in range(5, 21)]
 T_i = [i for i in range(1, 21)]
 A = [i for i in range(5, 51)]
-D = [1, 10, 100, 1000]
+D = [1, 10, 100, 1000, 10000]
 
 fname = "data_F%d_T%d_A%d_D%d_pe%d.csv" % (max(F), max(T_i), max(A), max(D), 100*max(pe))
 print(fname)
@@ -84,6 +84,10 @@ for d in D:
           if t_i + aa < ff:
             continue
           max_exp, index = find_opt_a_i(v, d, e_c, t_i, aa, ff, fx_vals)
+          if index == 0:
+            print(v, d, e_c, d_s, p_e, t_i, aa, ff, max_exp, index)
+            print('skip: because not participating is better.')
+            continue
           if index != t_i:
             print(v, d, e_c, d_s, p_e, t_i, aa, ff, max_exp, index)
             raise Exception('conjecture is incorrect')
