@@ -67,7 +67,7 @@ v = 1
 pe = [i/100. for i in range(1,11)]
 F = [i for i in range(5, 11)]
 T_i = [i for i in range(1, 21)]
-A = [i for i in range(5, 21)]
+A = [i for i in range(5, 31)]
 D = [i for i in range(1, 16, 2)]
 
 data = []
