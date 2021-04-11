@@ -1,8 +1,6 @@
 import numpy as np
 import pandas as pd
-import seaborn as sns
 import scipy.special as ss
-import matplotlib.pyplot as plt
 
 def find_opt_y_unlimited(v, d, x, d_s, p_e):
   z = -np.log(p_e)
@@ -61,13 +59,14 @@ def find_opt_a_i(v, d, e_c, t_i, aa, ff, fx_vals):
   
   return max_exp, index
 
+# -----------------------------------------------------------
 e_c, d_s = 0.001, 0.001
 v = 1
 
 pe = [i/100. for i in range(1,11)]
-F = [i for i in range(5, 11)]
+F = [i for i in range(5, 21)]
 T_i = [i for i in range(1, 21)]
-A = [i for i in range(5, 31)]
+A = [i for i in range(5, 51)]
 D = [i for i in range(1, 16, 2)]
 
 data = []
@@ -93,36 +92,3 @@ print(df)
 fname = "data_F%d_T%d_A%d_D%d.csv" % (max(F), max(T_i), max(A), max(D))
 df.to_csv(fname, sep=',')
 
-#
-#
-#
-#
-# sns.set_theme(style="ticks")
-#
-# # Create a dataset with many short random walks
-# rs = np.random.RandomState(4)
-# pos = rs.randint(-1, 2, (20, 5)).cumsum(axis=1)
-# pos -= pos[:, 0, np.newaxis]
-# step = np.tile(range(5), 20)
-# walk = np.repeat(range(20), 5)
-# df = pd.DataFrame(np.c_[pos.flat, step, walk],
-#                   columns=["position", "step", "walk"])
-#
-# # Initialize a grid of plots with an Axes for each walk
-# grid = sns.FacetGrid(df, col="walk", hue="walk", palette="tab20c",
-#                      col_wrap=4, height=1.5)
-#
-# # Draw a horizontal line to show the starting point
-# grid.map(plt.axhline, y=0, ls=":", c=".5")
-#
-# # Draw a line plot to show the trajectory of each random walk
-# grid.map(plt.plot, "step", "position", marker="o")
-#
-# # Adjust the tick positions and labels
-# grid.set(xticks=np.arange(5), yticks=[-3, 3],
-#          xlim=(-.5, 4.5), ylim=(-3.5, 3.5))
-#
-# # Adjust the arrangement of the plots
-# grid.fig.tight_layout(w_pad=1)
-#
-# plt.show()
